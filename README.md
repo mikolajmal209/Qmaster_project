@@ -1,2 +1,2 @@
-# Qmaster_project
-Quantum image processing
+# Quantum image processing
+
