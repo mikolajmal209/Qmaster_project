@@ -1,21 +1,21 @@
 from sklearn import svm
 from matplotlib import pyplot as plt
 import pandas as pd
-from keras.datasets import mnist,fashion_mnist
 from sklearn.metrics import ConfusionMatrixDisplay, accuracy_score,classification_report
 import datetime as dt
 from skimage.transform import resize
 from sklearn.model_selection import train_test_split
 import numpy as np
-
-def mnist_svm_full_fromat():
+# from reader import train_X_resize as train_X,train_Y, test_X_resize as test_X,test_Y
+from reader import Ftrain_X_resize as train_X,Ftrain_Y as train_Y, Ftest_X_resize as test_X,Ftest_Y as test_Y
+def mnist_svm_full_fromat(train_X,train_Y,test_X,test_Y):
     # data loading
-    (train_X, train_Y), (test_X, test_Y) = fashion_mnist.load_data()
-    #changing size of the images
-    train_X = resize(train_X,(60000,32,32))
-    test_X  = resize(test_X,(10000,32,32))
-    plt.imshow(train_X[200])
-    plt.show()
+    # (train_X, train_Y), (test_X, test_Y) = fashion_mnist.load_data()
+    # #changing size of the images
+    # train_X = resize(train_X,(60000,32,32))
+    # test_X  = resize(test_X,(10000,32,32))
+    # plt.imshow(train_X[200])
+    # plt.show()
     train_X.shape = (60000, 1024)
     test_X.shape = (10000, 1024)
     target = [0,1,2,3,4,5,6,7,8,9]
@@ -65,5 +65,5 @@ def  mnist_svm_small_fromat(training_images):
     plt.title("confusion_matrix_SVM_400_samples")
     plt.show()
     
-mnist_svm_small_fromat("datasets/train.csv")
-#mnist_svm_full_fromat()
+mnist_svm_small_fromat("mnist\mnist_train.csv")
+#mnist_svm_full_fromat(train_X,train_Y,test_X,test_Y)
